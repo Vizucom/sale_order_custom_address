@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="sale_order_form_view_inherit" model="ir.ui.view">
+            <field name="name">sale_order_custom_address.sale.form.inherit</field>
+            <field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+
+				<field name="partner_id" position="after">
+					<field name="use_custom_address"
+					   on_change="onchange_use_custom_address(use_custom_address,partner_id)"/>
+					
+					<field name="custom_name" placeholder="Name"
+					   attrs="{'invisible': [('use_custom_address','=',False)], 'required': [('use_custom_address','=',True)] }"/>
+                    <field 	name="custom_street" placeholder="Street..." 
+							attrs="{'invisible': [('use_custom_address','=',False)], 'required': [('use_custom_address','=',True)] }"/>
+                    <field name="custom_street2" string="" attrs="{'invisible': [('use_custom_address','=',False)] }"/>
+                    <field name="custom_city" placeholder="City" attrs="{'invisible': [('use_custom_address','=',False)], 'required': [('use_custom_address','=',True)] }" />
+                    <field name="custom_zip" placeholder="ZIP" attrs="{'invisible': [('use_custom_address','=',False)], 'required': [('use_custom_address','=',True)] }"/>
+                    <field name="custom_country_id" placeholder="Country" class="oe_no_button" options="{ 'no_open': True }" attrs="{'invisible': [('use_custom_address','=',False)], 'required': [('use_custom_address','=',True)] }"/>
+				</field>
+			</field>
+		</record>
+
+    </data>
+</openerp>
